@@ -1,7 +1,43 @@
-const nome = document.getElementById('nome');
-const altura = document.getElementById('altura');
-const peso = document.getElementById('peso');
-const calcular = document.getElementById('calculado');
-const resultado = document.getElementById('resultado');
 
-nome.value = 'Bernard ';
+const calcular = document.getElementById('calculado');
+
+
+
+
+
+function imc (){
+  const nome = document.getElementById('nome').value;
+  const altura = document.getElementById('altura').value;
+  const peso = document.getElementById('peso'),value;
+  const resultado = document.getElementById('resultado');
+
+  if(nome  !== '' && altura !== '' && peso !== ''){
+    
+    const valorIMC = (peso / (altura * altura)).toFixed(1);
+
+    let classificacao = '';
+
+
+    if (valorIMC < 18.5){
+      classificacao = 'abaixo do peso';
+    }else if (valorIMC < 25){
+      classificacao = 'Peso ideal. Parabéns!!!';
+    }else if (valorIMC < 30){
+      classificacao = 'Levemente acima do peso. Cuidado!';
+    }else if (valorIMC <35){
+      classificacao = 'Acima do peso!!! Procure um medico!!! ';
+    }else (valorIMC < 40){
+        classificacao = 'Cuidado !';
+    }
+
+    
+
+    resultado.textContent = `${nome} seu IMC é  ${valorIMC} e voce está ${classificacao}`;
+
+
+  }else{
+    resultado.textContent = 'Preencha todos os campos!!!'
+  }
+}
+
+calcular.addEventListener('click', imc);
